@@ -12,34 +12,36 @@
 .op
 
 * internal node to cell *
-.ic q = Vdd
+.ic X_cell.q = 0 X_cell.qBar = Vdd wordLine = 0 bBarLine = 0
 
-*.tran 0.001n 2n
+.tran 0.001n 10n
 Vsupply Vd gnd Vdd
-Vs_to_groung Vs 0 0
-*VbitLinecharge in gnd PULSE (0 Vdd 0.1n 0.01n 10n 20n)
-*Vflip
+*Vs_to_groung Vs 0 0
+*VwordLine wordLine gnd PULSE (0 Vdd 1n 0.01n 0.01n 8n 20n)
+*Vwrite    bBarLine gnd PULSE (Vdd 0 2n 0.01n 0.01n 4n 20n)
+
 
 * simulation output *
-.probe v(in) v(n2) v(out)
+.probe v(X_cell.q) v(X_cell.qBar) v(bLine) v(bBarLine) v(wordLine)
 .options acct post probe
 
 * circuit *
 * a single cell *
-X_cell wordLine bLine bBarLine Vdd gnd
 
-
+* test inverter
+*X_cell wordLine bLine bBarLine Vd Vs X_SRAM_cell
+X_cell Vs Vs Vs Vd Vs X_SRAM_cell $ attempt to make null cell
 
 
 ******************** subcircuits *************************
 
 ***  sram cell  ***
-.subckt wordLine bLine bBarLine nVdd nVss
-X_M3 b wordLine q X_M34_NMOS 
+.subckt X_SRAM_cell wordLine bLine bBarLine nVdd nVss
+X_M3 b    wordLine q    X_M34_NMOS 
 XInvLeft  qBar q    nVdd nVss X_inv_cell
 XInvRight q    qBar nVdd nVss X_inv_cell
 X_M4 bBar wordLine qBar X_M34_NMOS
-.ends sramCell
+.ends
 
 * inverter for SRAM cell*
 .subckt X_inv_cell nIn nOut nVdd nVss
@@ -49,7 +51,7 @@ XM12 nOut nIn nVss X_M12_NMOS
 
 * M3 and M4 of SRAM cell
 .subckt X_M34_NMOS VD VG VS
-Mn1 VQD VQG VQS NMOS W=0.4u L=0.2u
+Mn1 VQD VQG VQS NMOS W=0.2u L=0.18u
 *** Note you need to specify L here.
 
 * dummy voltages
@@ -60,7 +62,7 @@ VIS VQS VS 0V
 
 * M1 and M2 of SRAM cell
 .subckt X_M12_NMOS VD VG VS 
-Mn1 VQD VQG VQS NMOS W=0.4u L=0.2u
+Mn1 VQD VQG VQS NMOS W=0.2u L=0.18u
 *** Note you need to specify L here.
 
 * dummy voltages
@@ -71,7 +73,7 @@ VIS VQS VS 0V
 
 * M5 and M6 of SRAM cell
 .subckt X_M56_PMOS VD VG VS 
-Mn1 VQD VQG VQS PMOS W=0.8u L=0.2u
+Mn1 VQD VQG VQS PMOS W=0.4u L=0.18u
 *** Note you need to specify L here.
 
 ** dummy voltagies
@@ -88,7 +90,7 @@ VIS VQS VS 0V
 .subckt X_Inv nIn nOut nVdd nVss
 Xpmos nOut nIn nVdd X_LPMOS
 Xnmos nOut nIn nVss X_INMOS
-.ends XInv
+.ends
 
 * transfer gate *
 .subckt X_tg nIn nOut nOn nOff
@@ -134,6 +136,6 @@ Mn1 VQD VQG VQS NMOS W=0.4u L=0.2u
 VID VD VQD 0V
 VIG VG VQG 0V
 VIS VQS VS 0V
-.ends XPMOS
+.ends XNMOS
 
 .end

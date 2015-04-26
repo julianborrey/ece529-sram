@@ -1,0 +1,69 @@
+***** HSPICE -- F-2011.09-SP2 32-BIT (Feb 27 2012) linux ******
+ Input File: sramCell.sp
+ lic:
+ lic: FLEXlm: v10.8
+ lic: USER:   jcb62                HOSTNAME: vlsi01.egr.duke.edu
+ lic: HOSTID: 180373300986         PID:      10202
+ lic: Using FLEXlm license file:
+ lic: 27060@license01.egr.duke.edu
+ lic: Checkout 1 hspice
+ lic: License/Maintenance for hspice will expire on 16-feb-2016/2014.09
+ lic: 1(in_use)/50(total) FLOATING license(s) on SERVER license01.egr.duke.edu
+ lic:
+ init: begin read circuit files,  cpu clock=  6.00E-02
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /ad
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /ad
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /behave
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /bjt
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /burr_brn
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /comlinear
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /dio
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /fet
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /lin_tech
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /pci
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /signet
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /ti
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /tline
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /xilinx
+       option runlvl
+       option acct
+       option post
+       option probe
+ init: end read circuit files,  cpu clock=  6.00E-02 memory=    150 kb
+ init: begin check errors,  cpu clock=  6.00E-02
+ init: end check errors,  cpu clock=  7.00E-02 memory=    151 kb
+ init: begin setup matrix, pivot=     0 cpu clock=  7.00E-02
+       establish matrix -- done,  cpu clock=  7.00E-02 memory=    159 kb
+       re-order matrix -- done,  cpu clock=  7.00E-02 memory=    164 kb
+ init: end setup matrix,  cpu clock=  7.00E-02 memory=    182 kb
+ dcop: begin dcop,  cpu clock=  7.00E-02
+ dcop: end dcop,  cpu clock=  7.00E-02 memory=    182 kb  tot_iter=      25
+ output: sramCell.tr0
+ sweep: tran tran0    begin, stop_t=  1.00E-08 #sweeps=**** cpu clock=  7.00E-02
+ tran: time= 1.4886E-09 tot_iter=      16 conv_iter=       8 cpu clock= 7.00E-02
+ tran: time= 2.4886E-09 tot_iter=      20 conv_iter=      10 cpu clock= 7.00E-02
+ tran: time= 3.4886E-09 tot_iter=      24 conv_iter=      12 cpu clock= 7.00E-02
+ tran: time= 4.4886E-09 tot_iter=      28 conv_iter=      14 cpu clock= 7.00E-02
+ tran: time= 5.4886E-09 tot_iter=      32 conv_iter=      16 cpu clock= 7.00E-02
+ tran: time= 6.4886E-09 tot_iter=      36 conv_iter=      18 cpu clock= 7.00E-02
+ tran: time= 7.4886E-09 tot_iter=      40 conv_iter=      20 cpu clock= 7.00E-02
+ tran: time= 8.4886E-09 tot_iter=      44 conv_iter=      22 cpu clock= 7.00E-02
+ tran: time= 9.4886E-09 tot_iter=      48 conv_iter=      24 cpu clock= 7.00E-02
+ tran: time= 1.0000E-08 tot_iter=      50 conv_iter=      25 cpu clock= 7.00E-02
+ sweep: tran tran0    end,  cpu clock=  7.00E-02 memory=    182 kb
+>info:         ***** hspice job concluded
+ lic: Release hspice token(s)

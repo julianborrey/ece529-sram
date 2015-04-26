@@ -1,0 +1,37 @@
+* "simulator" "HSPICE" 
+* "version" "F-2011.09-SP2 32-BIT"
+* "format" "HSP"
+* "rundate" "14:06:27 04/26/2015 "
+* "netlist" "sramCell.sp "
+* "runtitle" "* sramcell.sp"
+* time =    0.            
+* temperature =   25.0000        
+*** BEGIN: Saved Operating Point ***                     
+.option 
++ gmindc=   1.0000p       
+.nodeset
++ vd =   1.8000        
++ vs = 569.4251n       
++ x_cell.b =  40.0491p       
++ x_cell.bbar = 900.0000m       
++ x_cell.q =  40.3431p       
++ x_cell.qbar =   1.8000        
++ x_cell.x_m3.vqd =  40.0491p       
++ x_cell.x_m3.vqg = 569.4251n       
++ x_cell.x_m3.vqs =  40.3431p       
++ x_cell.x_m4.vqd = 900.0000m       
++ x_cell.x_m4.vqg = 569.4251n       
++ x_cell.x_m4.vqs =   1.8000        
++ x_cell.xinvleft.xm56.vqd =  40.3433p       
++ x_cell.xinvleft.xm56.vqg =   1.8000        
++ x_cell.xinvleft.xm56.vqs =   1.8000        
++ x_cell.xinvleft.xm12.vqd =  40.3431p       
++ x_cell.xinvleft.xm12.vqg =   1.8000        
++ x_cell.xinvleft.xm12.vqs = 569.4251n       
++ x_cell.xinvright.xm56.vqd =   1.8000        
++ x_cell.xinvright.xm56.vqg =  40.3431p       
++ x_cell.xinvright.xm56.vqs =   1.8000        
++ x_cell.xinvright.xm12.vqd =   1.8000        
++ x_cell.xinvright.xm12.vqg =  40.3431p       
++ x_cell.xinvright.xm12.vqs = 569.4251n       
+***   END: Saved Operating Point ***                     
