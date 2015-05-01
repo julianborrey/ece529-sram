@@ -4,7 +4,7 @@
 * Page 397 - Design Problem 2
 * 
 * Inverter chains to model classic rising and falling edges on logical signals.
-
+* It was found that 4 inverters chained together is enough to get the characteristic rise and falls.
 
 ************************************** Specification of parameters ******************************
 * The book use lambda = 0.1um 
@@ -39,11 +39,11 @@ XInvBlock8  out7  out8 Vdd gnd InverterBlock
 XInv1  in     out1   power ground Inverter
 XInv2  out1   out2   power ground Inverter
 XInv3  out2   out3   power ground Inverter
-XInv4  out3   out4   power ground Inverter
-XInv5  out4   out5   power ground Inverter
-XInv6  out5   out6   power ground Inverter
-XInv7  out6   out7   power ground Inverter
-XInv8  out7   out    power ground Inverter
+XInv4  out3   out    power ground Inverter
+*XInv5  out4   out5   power ground Inverter
+*XInv6  out5   out6   power ground Inverter
+*XInv7  out6   out7   power ground Inverter
+*XInv8  out7   out    power ground Inverter
 .ends InverterBlock
 
 *** Inverter subcircuit
@@ -55,6 +55,6 @@ Mn_inv  out in ground NMOS l=Lch W='2*lambda'
 *** Analysis
 .ic V(input)=0
 .tran 1fs 15ns uic
-.probe V(input) V(out0) V(out1) V(out5) V(out6) V(out7) V(out8)
+.probe V(input) V(out0) V(out1) V(out2) V(out3) V(out7) V(out8)
 .options post probe
 .end
