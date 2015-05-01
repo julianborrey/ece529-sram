@@ -1,0 +1,49 @@
+***** HSPICE -- F-2011.09-SP2 32-BIT (Feb 27 2012) linux ******
+ Input File: bitline_cap.sp
+ lic:
+ lic: FLEXlm: v10.8
+ lic: USER:   jcb62                HOSTNAME: vlsi01.egr.duke.edu
+ lic: HOSTID: 180373300986         PID:      32211
+ lic: Using FLEXlm license file:
+ lic: 27060@license01.egr.duke.edu
+ lic: Checkout 1 hspice
+ lic: License/Maintenance for hspice will expire on 16-feb-2016/2014.09
+ lic: 1(in_use)/50(total) FLOATING license(s) on SERVER license01.egr.duke.edu
+ lic:
+ init: begin read circuit files,  cpu clock=  5.00E-02
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /ad
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /ad
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /behave
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /bjt
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /burr_brn
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /comlinear
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /dio
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /fet
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /lin_tech
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /pci
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /signet
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /ti
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /tline
+       option search   = /home/software/Synopsys/hspice-2012/hspice/parts
+                         /xilinx
+       option runlvl
+       option post
+       option probe
+       option captab
+ init: end read circuit files,  cpu clock=  6.00E-02 memory=    152 kb
+ init: begin check errors,  cpu clock=  6.00E-02
+>error          ***** hspice job aborted
+ lic: Release hspice token(s)
