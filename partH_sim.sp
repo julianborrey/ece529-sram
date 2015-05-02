@@ -2,7 +2,7 @@
 * Final Project - Design of SRAM Cell and Read/Write Circuitry
 * Analysis and Design of Digital Integrated Circuits in Deep Submicron Technology
 * Page 397 - Design Problem 2
-* 
+*
 * Measuring the capacitance of a bitline with varrying array sizes.
 
 ************************************** Specification of parameters ******************************
@@ -18,18 +18,17 @@
 .param lambda = 0.09u
 .param Lch = '2*lambda'
 
-*** Define input voltage source (output of preceeding gate)
- 
+*** Define input voltage source (output of preceeding gate) 
 V_power Vdd gnd 1.8
-*V_wordline 2 gnd 1.8 pulse(0v 1.8v, 10n, 7n, 7n, 500n, 1u)
 
 *** Main Circuit
-*   We model a bitline with 256 (or 128) cells and a pull-up transistor attached to it
-*   To get 256 cells we use 8 blocks of 32 cells.
-*   1 is b (bitline) and 5 is bBar
-*   We have an initial condition of Vdd on the bitline and then we measure the time 
-*   to drain the charge through the 1k resistor.
+* We model the RC circuit derived from the pull-up transistor used in the
+* precharge phase of a read. To model the bitline capactiance we use 
+* capacitors to model the wire and contact resistance. Actual MOSFETs in 
+* the cells model the junction capacitances. Instead of a resistor we use 
+* the real pull-up transistor to charge the bitline.
 
+Mn0 Vdd Vdd     1 gnd NMOS l=Lch W='78*lambda' $pull-up transistor
 XSRAM_32block_1 1 Vdd gnd 5 SRAM_32block
 XSRAM_32block_2 1 Vdd gnd 5 SRAM_32block
 XSRAM_32block_3 1 Vdd gnd 5 SRAM_32block
@@ -38,8 +37,6 @@ XSRAM_32block_5 1 Vdd gnd 5 SRAM_32block
 XSRAM_32block_6 1 Vdd gnd 5 SRAM_32block
 XSRAM_32block_7 1 Vdd gnd 5 SRAM_32block
 XSRAM_32block_8 1 Vdd gnd 5 SRAM_32block
-Mn1 Vdd 9 1 gnd NMOS l=Lch W='50*lambda' $pull up transistor
-R2 1 gnd 1k
 
 *** Define subcircuit of 32 SRAM cells made up of 4 blocks of 8 cells
 .SUBCKT SRAM_32block 1 power ground 5
@@ -73,12 +70,11 @@ Mp_6 4 3 Vdd Vdd PMOS l=Lch W='8*lambda'
 Mn_4 5 2 4   gnd NMOS l=Lch W='4*lambda'
 C3 5 gnd 0.72f $wire capacitance
 C4 5 gnd 0.5f  $contact capacitance
-M
 .ends SRAM_cell
 
 *** Analysis
-.ic V(1)=1.8
+.ic V(1)=0.36 $ Vdd / 5
 .tran 0.01ps 3ns uic
-.probe V(1)
-.options post probe captab
+.probe V(1) $ measuring bitline voltage
+.options post probe
 .end
